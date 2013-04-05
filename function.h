@@ -17,8 +17,8 @@
 #define FUNCTION_H
 
 void drawCube(float);
-void renderScene4();
-void DrawTriangle(Vectorf2,Vectorf2,Vectorf2);
+void renderScene4(float, float, float);
+void DrawTriangle(Vectorf2, Vectorf2, Vectorf2);
 
 #endif
 

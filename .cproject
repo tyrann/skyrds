@@ -35,8 +35,8 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.mingw.exe.debug.option.optimization.level.936434828" name="Optimization Level" superClass="gnu.c.compiler.mingw.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.mingw.exe.debug.option.debugging.level.236853388" name="Debug Level" superClass="gnu.c.compiler.mingw.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.926160341" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;C:\Users\Aech\C&amp;C++\libs\freeglut\include&quot;"/>
-									<listOptionValue builtIn="false" value=""/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\Aech\C_C++\libs\freeglut\include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;C:\Users\Aech\C_C++\libs\glew-1.9.0\include&quot;"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1803057994" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>

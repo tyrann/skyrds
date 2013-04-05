@@ -1,16 +1,10 @@
 /*
- * track1.cpp
+ * main.cpp
  *
  *  Created on: 31 mars 2013
  *      Author: Aech
  */
-/*
- * forms.cpp
- *
- *  Created on: 31 mars 2013
- *      Author: Aech
- */
-#define _USE_MATH_DEFINES
+
 #include <math.h>
 #include <cstdlib>
 #include <iostream>
@@ -19,19 +13,23 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include "function.h"
-#include "camera.h"
+#include "callbacks.h"
 
 //WINDOW
-int g_iWindowWidth = 800;
-int g_iWindowHeight = 600;
+int g_iWindowWidth = 1024;
+int g_iWindowHeight = 768;
 
 int g_hWindowHandle = 0;
 
 //MOVEMENT
+bool forward = false;
+bool backwards = false;
+bool left = false;
+bool right = false;
+float pos_X = 0.0f;
+float pos_Y = -1.4f;
+float pos_Z = -6.0f;
 float movement_speed = 2;
-
-//CAMERA
-Camera* pGameCamera = NULL;
 
 std::clock_t g_PreviousTicks;
 std::clock_t g_CurrentTick;
@@ -47,16 +45,23 @@ float amb[] = { 0.2, 0.2, 0.2, 1.0 };
 
 float difamb[] = { 1.0, 0.5, 0.3, 1.0 };
 
-void initGlut(int argc, char* argv[]);
+//vertex buffer object
+GLuint VBO;
 
-void DisplayGL();
-void IdleGL();
-void KeyboardGL(unsigned char c, int x, int y);
-void KeyboardGLRelease(unsigned char c, int x, int y);
-void MouseGL(int button, int state, int x, int y);
-void MotionGL(int x, int y);
-void ReshapeGL(int w, int h);
+static void initGlut(int argc, char* argv[]);
 
+static void InitializeGlutCallbacks() {
+
+	//Register the callback functions
+	glutDisplayFunc(DisplayGL);
+	glutIdleFunc(IdleGL);
+	glutKeyboardUpFunc(KeyboardGLRelease);
+	glutKeyboardFunc(KeyboardGL);
+	glutMouseFunc(MouseGL);
+	glutMotionFunc(MotionGL);
+	glutReshapeFunc(ReshapeGL);
+
+}
 
 int main(int argc, char **argv) {
 	setvbuf(stdout, NULL, _IONBF, 0);
@@ -64,11 +69,12 @@ int main(int argc, char **argv) {
 
 	g_PreviousTicks = std::clock();
 	initGlut(argc, argv);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 	glutMainLoop();
 	return 0;
 }
 
-void initGlut(int argc, char* argv[]) {
+static void initGlut(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 	int iScreenWidth = glutGet(GLUT_SCREEN_WIDTH);
@@ -82,31 +88,24 @@ void initGlut(int argc, char* argv[]) {
 
 	g_hWindowHandle = glutCreateWindow("OpenGL Template");
 
-	//Register the callback functions
-	glutDisplayFunc(DisplayGL);
-	glutIdleFunc(IdleGL);
-	glutKeyboardUpFunc(KeyboardGLRelease);
-	glutKeyboardFunc(KeyboardGL);
-	glutMouseFunc(MouseGL);
-	glutMotionFunc(MotionGL);
-	glutReshapeFunc(ReshapeGL);
+	InitializeGlutCallbacks();
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-	glLightfv(GL_LIGHT0,GL_POSITION,pos);
+	glLightfv(GL_LIGHT0, GL_POSITION, pos);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, dif);
 	glLightfv(GL_LIGHT0, GL_AMBIENT, amb);
 }
-void DisplayGL() {
+static void DisplayGL() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	renderScene4();
+	renderScene4(pos_X,pos_Y,pos_Z);
 	glutSwapBuffers();
 }
 
-void IdleGL() {
+static void IdleGL() {
 	g_CurrentTick = std::clock();
 	float deltaTicks = (float) (g_CurrentTick - g_PreviousTicks);
 	g_PreviousTicks = g_CurrentTick;
@@ -116,24 +115,79 @@ void IdleGL() {
 	g_fRotate1 = fmodf(g_fRotate1, 360.0f);
 
 	glutPostRedisplay();
+	if (forward) {
+		pos_Z += movement_speed * deltaTtime;
+	}
+	if (backwards) {
+		pos_Z -= movement_speed * deltaTtime;
+	}
+	if (right) {
+		pos_X -= movement_speed * deltaTtime;
+	}
+	if (left) {
+		pos_X += movement_speed * deltaTtime;
+	}
 }
-void KeyboardGL(unsigned char c, int x, int y) {
+static void KeyboardGL(unsigned char c, int x, int y) {
+	printf("Key pressed is : %d\n ", (int) c);
+	switch (c) {
+	case 1:
+		break;
+	case 2:
+		break;
+	case 97:
+		left = true;
+		break;
+	case 100:
+		right = true;
+		break;
+	case 115:
+		backwards = true;
+		break;
+	case 119:
+		forward = true;
+		break;
+	case 27:
+		break;
+	}
 
 }
 
-void KeyboardGLRelease(unsigned char c, int x, int y) {
+static void KeyboardGLRelease(unsigned char c, int x, int y) {
+	printf("Key pressed is : %d\n ", (int) c);
+	switch (c) {
+	case 1:
+		break;
+	case 2:
+		break;
+	case 97:
+		left = false;
+		break;
+	case 100:
+		right = false;
+		break;
+	case 115:
+		backwards = false;
+		break;
+	case 119:
+		forward = false;
+		break;
+	case 27:
+		glutLeaveMainLoop();
+		break;
+	}
 
 }
 
-void MouseGL(int button, int state, int x, int y) {
+static void MouseGL(int button, int state, int x, int y) {
 
 }
 
-void MotionGL(int x, int y) {
+static void MotionGL(int x, int y) {
 
 }
 
-void ReshapeGL(int w, int h) {
+static void ReshapeGL(int w, int h) {
 
 	if (h == 0) {
 		h = 1;
@@ -149,5 +203,4 @@ void ReshapeGL(int w, int h) {
 	glutPostRedisplay();
 
 }
-
 

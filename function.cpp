@@ -58,13 +58,13 @@ void RenderScene1() {
 }
 
 
-void renderScene4() {
+void renderScene4(float pos_X, float pos_Y, float pos_Z) {
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
 	float difamb[] = { 1.0, 0.5, 0.3, 1.0 };
 
-	glTranslatef(0.0, -1.4, -6.0);         // Translate back and to the left
+	glTranslatef(pos_X, pos_Y, pos_Z);         // Translate back and to the left
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE, difamb);
 	glNormal3f(0.0, 0.0, 1.0);
 
