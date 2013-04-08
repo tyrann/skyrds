@@ -5,6 +5,7 @@
  *      Author: Aech
  */
 #include <stdio.h>
+#include <vector>
 
 int main(int argc, char **argv) {
 	setvbuf(stdout, NULL, _IONBF, 0);
