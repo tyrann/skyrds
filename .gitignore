@@ -1,6 +1,20 @@
-# Ignore everything
-*
+# Compiled source #
+###################
+Debug/
 
-# But not these files...
-!.gitignore
-!README.md
+# Libs #
+###################
+lib/
+
+# Project files #
+###################
+.settings/
+.cproject
+.project
+
+# Ogre resources #
+###################
+*.dll
+*.exe
+*.cfg
+*.log
