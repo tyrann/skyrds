@@ -1,6 +1,7 @@
 # Compiled source #
 ###################
 Debug/
+build/
 
 # Libs #
 ###################
@@ -18,3 +19,9 @@ lib/
 *.exe
 *.cfg
 *.log
+
+# CMAKE #
+#########
+CMakeFiles/
+cmake_install.cmake
+CMakeLists.txt
