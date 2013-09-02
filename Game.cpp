@@ -23,14 +23,17 @@ Game::Game(void) : mRoot(0),
 //-------------------------------------------------------------------------------------
 Game::~Game(void)
 {
-	if (spaceshipAndCamera) delete spaceshipAndCamera;
+
     if (mTrayMgr) delete mTrayMgr;
     if (mCameraMan) delete mCameraMan;
+
+    //if (spaceshipAndCamera) delete spaceshipAndCamera;
 
     //Remove ourself as a Window listener
     Ogre::WindowEventUtilities::removeWindowEventListener(mWindow, this);
     windowClosed(mWindow);
     delete mRoot;
+
 }
 
 //-------------------------------------------------------------------------------------

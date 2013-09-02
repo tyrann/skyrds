@@ -18,7 +18,6 @@ SpaceshipAndCamera::SpaceshipAndCamera(Ogre::SceneManager* mSceneMgr) :
 
 SpaceshipAndCamera::~SpaceshipAndCamera(void)
 {
-	delete camera;
 	delete spaceship;
 }
 
