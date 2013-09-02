@@ -67,11 +67,11 @@ void Game::createViewports(void)
 void Game::createScene(void)
 {
 
-	mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
-	mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
+		mSceneMgr->setAmbientLight(Ogre::ColourValue(0, 0, 0));
+		mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE);
 
-	mSceneMgr->getRootSceneNode()->addChild(spaceshipAndCamera->getSpaceship()->getNode());
-	mRoot->addFrameListener(spaceshipAndCamera);
+		mSceneMgr->getRootSceneNode()->addChild(spaceshipAndCamera->getSpaceship()->getNode());
+		mRoot->addFrameListener(spaceshipAndCamera);
 
 	    /*Ogre::Entity* entNinja = mSceneMgr->createEntity("Ninja", "ninja.mesh");
 	    entNinja->setCastShadows(true);
@@ -384,16 +384,16 @@ bool Game::setup(void)
     if (!carryOn) return false;
 
     chooseSceneManager();
+    // Create any resource listeners (for loading screens)
+    createResourceListener();
+    // Load resources
+    loadResources();
     createCamera();
     createViewports();
 
     // Set default mipmap level (NB some APIs ignore this)
     Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-    // Create any resource listeners (for loading screens)
-    createResourceListener();
-    // Load resources
-    loadResources();
 
     // Create the scene
     createScene();
