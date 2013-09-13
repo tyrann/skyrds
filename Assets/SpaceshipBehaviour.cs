@@ -5,16 +5,14 @@ public class SpaceshipBehaviour : MonoBehaviour {
 	public float speed = 10f;
 	private bool isFalling = false;
 	public GameObject spaceshipPrefab;
-	private GameObject currentSpaceship;
 	// Use this for initialization
 	void Start () {
-		Respawn();
+
 	}
 	
 	void Respawn() {
-		Destroy(currentSpaceship);
-		//transform.position = GameObject.FindGameObjectWithTag("Respawn").transform.position;
-		currentSpaceship = (GameObject) Instantiate(spaceshipPrefab, GameObject.FindGameObjectWithTag("Respawn").transform.position, Quaternion.identity);
+		Instantiate(spaceshipPrefab, GameObject.FindGameObjectWithTag("Respawn").transform.position, Quaternion.identity);
+		Destroy(gameObject);
 	}
 	
 	// Update is called once per frame
@@ -22,18 +20,20 @@ public class SpaceshipBehaviour : MonoBehaviour {
      	float forwardMovement = (Input.GetAxis("Vertical") > 0) ? Input.GetAxis("Vertical") * speed * Time.deltaTime : 0f;
      	float horizontalMovement = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 		
-        currentSpaceship.transform.Translate(Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
+        transform.Translate(Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
 				
 		if (Input.GetButtonDown("Jump") && !isFalling) {
-			currentSpaceship.transform.rigidbody.AddForce(new Vector3(0, 200, 0), ForceMode.Acceleration);
+			transform.rigidbody.AddForce(new Vector3(0, 200, 0), ForceMode.Acceleration);
 		}
-		if (currentSpaceship.transform.position.y <= -4) {
+		if (transform.position.y <= -4) {
 			Respawn();
 		}
 	}
 	
 	void OnCollisionEnter(Collision other) {
+		Debug.Log("enter");
 		if (other.collider.CompareTag("Ground")) {
+			Debug.Log("enter ground");
 		 isFalling = false;
 		}
 	}
@@ -46,7 +46,6 @@ public class SpaceshipBehaviour : MonoBehaviour {
 	
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag("Finish")) {
-			Destroy(currentSpaceship);
 			Respawn();
 		}
 	}
