@@ -31,9 +31,7 @@ public class SpaceshipBehaviour : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other) {
-		Debug.Log("enter");
 		if (other.collider.CompareTag("Ground")) {
-			Debug.Log("enter ground");
 		 isFalling = false;
 		}
 	}
