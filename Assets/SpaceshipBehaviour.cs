@@ -46,9 +46,9 @@ public class SpaceshipBehaviour : MonoBehaviour
 //		if (Input.GetButtonDown ("Jump") && !isFalling) {
 //			transform.rigidbody.AddForce (new Vector3 (0, 200, 0), ForceMode.Acceleration);
 //		}
-//		if (transform.position.y <= -4) {
-//			Respawn ();
-//		}
+		if (transform.position.y <= -4) {
+			Respawn ();
+		}
 //		
 //		if (distanceFromGround < 1) {
 //			Debug.Log ("Distance from ground is " + distanceFromGround);
