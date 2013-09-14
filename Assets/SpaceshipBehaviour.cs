@@ -12,6 +12,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		init_physics();
 	}
 	
 	void Respawn ()
@@ -21,25 +22,28 @@ public class SpaceshipBehaviour : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
 	{
 		distanceFromGround = transform.position.y - GameObject.FindGameObjectWithTag ("Ground").transform.position.y;
 		float forwardMovement = (Input.GetAxis ("Vertical") > 0) ? Input.GetAxis ("Vertical") * speed * Time.deltaTime : 0f;
 		float horizontalMovement = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
 		
-		transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
-				
-		if (Input.GetButtonDown ("Jump") && !isFalling) {
-			transform.rigidbody.AddForce (new Vector3 (0, 200, 0), ForceMode.Acceleration);
-		}
-		if (transform.position.y <= -4) {
-			Respawn ();
-		}
+//		transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
+//				
+//		if (Input.GetButtonDown ("Jump") && !isFalling) {
+//			transform.rigidbody.AddForce (new Vector3 (0, 200, 0), ForceMode.Acceleration);
+//		}
+//		if (transform.position.y <= -4) {
+//			Respawn ();
+//		}
+//		
+//		if (distanceFromGround < 1) {
+//			Debug.Log ("Distance from ground is " + distanceFromGround);
+//			transform.rigidbody.AddForce(new Vector3(0, (-gravity * rigidbody.mass)*(1/distanceFromGround), 0), ForceMode.Force);
+//		}
+	}
+	void init_physics(){
 		
-		if (distanceFromGround < 1) {
-			Debug.Log ("Distance from ground is " + distanceFromGround);
-			transform.rigidbody.AddForce(new Vector3(0, (-gravity * rigidbody.mass)*(1/distanceFromGround), 0), ForceMode.Force);
-		}
 	}
 	
 //	void OnCollisionEnter(Collision other) {
