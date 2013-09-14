@@ -42,18 +42,9 @@ public class SpaceshipBehaviour : MonoBehaviour
 		float horizontalMovement = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
 		
 		transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
-//				
-//		if (Input.GetButtonDown ("Jump") && !isFalling) {
-//			transform.rigidbody.AddForce (new Vector3 (0, 200, 0), ForceMode.Acceleration);
-//		}
 		if (transform.position.y <= -4) {
 			Respawn ();
 		}
-//		
-//		if (distanceFromGround < 1) {
-//			Debug.Log ("Distance from ground is " + distanceFromGround);
-//			transform.rigidbody.AddForce(new Vector3(0, (-gravity * rigidbody.mass)*(1/distanceFromGround), 0), ForceMode.Force);
-//		}
 	}
 
 	void init_physics ()
