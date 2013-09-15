@@ -26,6 +26,8 @@ public class SuspensionRay : MonoBehaviour
 			Vector3 shockDrag = levelParent.transform.TransformDirection (t) * -suspensionDamp;
 			parent.AddForceAtPosition (counterForce + shockDrag, hit.point);
 		}
+		//helps keeps the ship steady around the Y-axis
+		 levelParent.transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
 	}
 
 	// Use this for initialization
