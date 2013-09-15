@@ -17,29 +17,39 @@ public class SpaceshipBehaviour : MonoBehaviour
 	private Vector3 boxDimension;
 	private bool physicsSet = false;
 	
+	private float timeElapsed = 0;
+	private bool playing = true;
+	private bool won = false;
+	
 	
 	// Use this for initialization
 	void Start ()
 	{
+		transform.position = GameObject.FindGameObjectWithTag ("Respawn").transform.position;
 		init_physics ();
 	}
 	
 	void Respawn ()
 	{		
 		Instantiate (spaceshipPrefab, GameObject.FindGameObjectWithTag ("Respawn").transform.position, Quaternion.identity);
-		DestroyImmediate (gameObject);		
+		Destroy (gameObject);
+		timeElapsed = 0;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
 	{
-		distanceFromGround = transform.position.y - GameObject.FindGameObjectWithTag ("Ground").transform.position.y;
-		float forwardMovement = (Input.GetAxis ("Vertical") > 0) ? Input.GetAxis ("Vertical") * speed * Time.deltaTime : 0f;
-		float horizontalMovement = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
-		
-		transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
-		if (transform.position.y <= -4) {
-			Respawn ();
+		if (playing) {
+			distanceFromGround = transform.position.y - GameObject.FindGameObjectWithTag ("Ground").transform.position.y;
+			float forwardMovement = (Input.GetAxis ("Vertical") > 0) ? Input.GetAxis ("Vertical") * speed * Time.deltaTime : 0f;
+			float horizontalMovement = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
+			
+			transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
+			if (transform.position.y <= -4) {
+				playing = false;
+				won = false;
+			}
+			timeElapsed += Time.deltaTime;
 		}
 	}
 
@@ -63,7 +73,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 			GameObject suspension = GameObject.CreatePrimitive (PrimitiveType.Sphere);
 
 			suspension.name = "Suspension" + "(" + i + ")";
-
+			
 			suspension.transform.parent = spaceshipPrefab.transform;
 
 			suspension.transform.localPosition = transform.InverseTransformPoint (cornersPoint [i]);
@@ -95,7 +105,25 @@ public class SpaceshipBehaviour : MonoBehaviour
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.CompareTag ("Finish")) {
-			Respawn ();
+			won = true;
+			playing = false;
+		}
+	}
+	
+	void OnGUI () {
+		System.TimeSpan t = System.TimeSpan.FromSeconds(timeElapsed);
+
+		string timeFormat = string.Format("{0:D2}:{1:D2}:{2:D3}ms", 
+    			t.Minutes, 
+    			t.Seconds, 
+    			t.Milliseconds);
+		GUI.Label(new Rect(10,10,100,90), timeFormat);
+		
+		if (!playing) {
+			GUI.Label(new Rect(400,100,100,90), (won) ? "Won" : "Lost");
+			if (GUI.Button (new Rect (10,10,200,20), "Play !")) {
+				Respawn();
+			}
 		}
 	}
 }

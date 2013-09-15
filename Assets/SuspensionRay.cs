@@ -8,12 +8,11 @@ public class SuspensionRay : MonoBehaviour
 	float suspensionDamp = 15.00f;
 	private RaycastHit hit;
 	private Rigidbody parent;
-	GameObject levelParent;
 
 
 	void FixedUpdate ()
 	{	
-		
+		GameObject levelParent = GameObject.FindGameObjectWithTag ("Player");
 		parent = transform.root.rigidbody;
 		Vector3 down = transform.TransformDirection (Vector3.down);
 		Vector3 worldDown = levelParent.transform.TransformDirection (Vector3.down);
@@ -32,13 +31,13 @@ public class SuspensionRay : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		levelParent = GameObject.FindGameObjectWithTag ("Player");
-		parent = transform.root.rigidbody;
+
 	}
 
 	// Show yellow Rays
 	void OnDrawGizmos ()
 	{
+		GameObject levelParent = GameObject.FindGameObjectWithTag ("Player");
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawRay (transform.position, levelParent.transform.TransformDirection (Vector3.up) * -suspensionRange);
 		Gizmos.color=Color.white;
