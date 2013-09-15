@@ -5,7 +5,8 @@ public class SpaceshipBehaviour : MonoBehaviour
 {
 	public float speed = 10f;
 	public float distanceFromGround = 0f;
-	private bool isFalling = false;
+	public float jumpSpeed=300f;
+	public bool isFalling = false;
 	public GameObject spaceshipPrefab;
 	public float force;
 	public float gravity = Physics.gravity.y;
@@ -16,7 +17,6 @@ public class SpaceshipBehaviour : MonoBehaviour
 	private Transform[] corners = new Transform[5];
 	private Vector3 boxDimension;
 	private bool physicsSet = false;
-	
 	private float timeElapsed = 0;
 	private bool playing = true;
 	private bool won = false;
@@ -44,8 +44,16 @@ public class SpaceshipBehaviour : MonoBehaviour
 			float forwardMovement = (Input.GetAxis ("Vertical") > 0) ? Input.GetAxis ("Vertical") * speed * Time.deltaTime : 0f;
 			float horizontalMovement = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
 			
-			transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
-			if (transform.position.y <= -4) {
+			if (Input.GetButton ("Jump")) {
+				rigidbody.AddForce (Vector3.up * jumpSpeed, ForceMode.Force);
+			}
+			
+			rigidbody.AddForce (Vector3.forward * forwardMovement * 5000);
+			rigidbody.AddRelativeTorque (0, 0, -(Input.GetAxis ("Horizontal")) * 50);
+			rigidbody.AddRelativeForce ((Input.GetAxis ("Horizontal")) * 500, 0, 0);
+			
+//			transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
+			if (transform.position.y <= -6) {
 				playing = false;
 				won = false;
 			}
@@ -80,7 +88,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 
 			corners [i] = suspension.transform;
 			//Adds the suspension script
-			suspension.AddComponent("SuspensionRay");
+			suspension.AddComponent ("SuspensionRay");
 			
 			
 			Destroy (suspension.GetComponent ("MeshRenderer"));
@@ -110,19 +118,20 @@ public class SpaceshipBehaviour : MonoBehaviour
 		}
 	}
 	
-	void OnGUI () {
-		System.TimeSpan t = System.TimeSpan.FromSeconds(timeElapsed);
+	void OnGUI ()
+	{
+		System.TimeSpan t = System.TimeSpan.FromSeconds (timeElapsed);
 
-		string timeFormat = string.Format("{0:D2}:{1:D2}:{2:D3}ms", 
+		string timeFormat = string.Format ("{0:D2}:{1:D2}:{2:D3}ms", 
     			t.Minutes, 
     			t.Seconds, 
     			t.Milliseconds);
-		GUI.Label(new Rect(10,10,100,90), timeFormat);
+		GUI.Label (new Rect (10, 10, 100, 90), timeFormat);
 		
 		if (!playing) {
-			GUI.Label(new Rect(400,100,100,90), (won) ? "Won" : "Lost");
-			if (GUI.Button (new Rect (10,10,200,20), "Play !")) {
-				Respawn();
+			GUI.Label (new Rect (400, 100, 100, 90), (won) ? "Won" : "Lost");
+			if (GUI.Button (new Rect (10, 10, 200, 20), "Play !")) {
+				Respawn ();
 			}
 		}
 	}
