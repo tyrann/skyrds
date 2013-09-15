@@ -12,7 +12,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 	private BoxCollider boxCollider;
 	private float stability = 1;
 	private Vector3[] cornersPoint = new Vector3[5];
-	private  int nbSuspensions= 5;
+	private  int nbSuspensions = 5;
 	private Transform[] corners = new Transform[5];
 	private Vector3 boxDimension;
 	private bool physicsSet = false;
@@ -21,17 +21,13 @@ public class SpaceshipBehaviour : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		init_physics ();		
+		init_physics ();
 	}
 	
 	void Respawn ()
-	{
+	{		
 		Instantiate (spaceshipPrefab, GameObject.FindGameObjectWithTag ("Respawn").transform.position, Quaternion.identity);
-		for (int i =0; i<=nbSuspensions-1; i++) {	
-			//DESTROY THE CHILD SUSPENSION
-
-		}
-		Destroy (gameObject);
+		DestroyImmediate (gameObject);		
 	}
 	
 	// Update is called once per frame
@@ -50,9 +46,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 	void init_physics ()
 	{
 
-
-//Creates a box around the hovering object
-
+		//Creates a box around the hovering object
 		
 		boxCollider = spaceshipPrefab.GetComponent ("BoxCollider") as BoxCollider;
 
@@ -75,7 +69,10 @@ public class SpaceshipBehaviour : MonoBehaviour
 			suspension.transform.localPosition = transform.InverseTransformPoint (cornersPoint [i]);
 
 			corners [i] = suspension.transform;
-
+			//Adds the suspension script
+			suspension.AddComponent("SuspensionRay");
+			
+			
 			Destroy (suspension.GetComponent ("MeshRenderer"));
 			Destroy (suspension.GetComponent ("Collider"));
 
@@ -87,17 +84,13 @@ public class SpaceshipBehaviour : MonoBehaviour
 		
 	}
 	
-//	void OnCollisionEnter(Collision other) {
-//		if (other.collider.CompareTag("Ground")) {
-//		 isFalling = false;
-//		}
-//	}
-//	
-//	void OnCollisionExit(Collision other) {
-//		if (other.collider.CompareTag("Ground")) {
-//		 isFalling = true;
-//		}
-//	}
+	void initTrailRenderer (GameObject suspension)
+	{
+//		TrailRenderer trail=suspension.AddComponent("TrailRenderer");
+//		trail.castShadows=true;
+//		trail.receiveShadows=true;
+//		trail.material=
+	}
 	
 	void OnTriggerEnter (Collider other)
 	{
