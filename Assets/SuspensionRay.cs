@@ -3,9 +3,10 @@ using System.Collections;
 
 public class SuspensionRay : MonoBehaviour
 {
-	float suspensionRange = 0.7f;
+	float suspensionRange = 1.7f;
 	float suspensionForce = 300f;
-	float suspensionDamp = 15.00f;
+	float suspensionDamp = 30.00f;
+	bool hasLift=false;
 	private RaycastHit hit;
 	private Rigidbody parent;
 
@@ -17,7 +18,9 @@ public class SuspensionRay : MonoBehaviour
 		Vector3 down = transform.TransformDirection (Vector3.down);
 		Vector3 worldDown = levelParent.transform.TransformDirection (Vector3.down);
 		if (Physics.Raycast (transform.position, worldDown, out hit, suspensionRange) && hit.collider.transform.root != transform.root) {
+			hasLift=true;
 			Vector3 velocityAtTouch = parent.GetPointVelocity (hit.point);
+			suspensionForce = 300 * 1/hit.distance;
 			float compression = hit.distance / (suspensionRange);
 			compression = -compression + 1;
 			Vector3 counterForce = (-worldDown * compression * suspensionForce);

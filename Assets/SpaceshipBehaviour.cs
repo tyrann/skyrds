@@ -5,7 +5,6 @@ public class SpaceshipBehaviour : MonoBehaviour
 {
 	public float speed = 10f;
 	public float distanceFromGround = 0f;
-	public float jumpSpeed=300f;
 	public bool isFalling = false;
 	public GameObject spaceshipPrefab;
 	public float force;
@@ -20,6 +19,11 @@ public class SpaceshipBehaviour : MonoBehaviour
 	private float timeElapsed = 0;
 	private bool playing = true;
 	private bool won = false;
+	private float thrustReversal = 100000f;
+	private float thrustBalance = 20f;
+	private float lateralThrust = 5000f;
+	private float liftThrust = 10000f;
+	
 	
 	
 	// Use this for initialization
@@ -43,14 +47,18 @@ public class SpaceshipBehaviour : MonoBehaviour
 			distanceFromGround = transform.position.y - GameObject.FindGameObjectWithTag ("Ground").transform.position.y;
 			float forwardMovement = (Input.GetAxis ("Vertical") > 0) ? Input.GetAxis ("Vertical") * speed * Time.deltaTime : 0f;
 			float horizontalMovement = Input.GetAxis ("Horizontal") * speed * Time.deltaTime;
-			
+			foreach (Transform child in transform) {
+				//Test each suspension for bool hasLift
+
+			}
+			//use the test above to decide if thrust can be applied
 			if (Input.GetButton ("Jump")) {
-				rigidbody.AddForce (Vector3.up * jumpSpeed, ForceMode.Force);
+				rigidbody.AddForce (Vector3.up * liftThrust, ForceMode.Force);
 			}
 			
-			rigidbody.AddForce (Vector3.forward * forwardMovement * 5000);
-			rigidbody.AddRelativeTorque (0, 0, -(Input.GetAxis ("Horizontal")) * 50);
-			rigidbody.AddRelativeForce ((Input.GetAxis ("Horizontal")) * 500, 0, 0);
+			rigidbody.AddForce (Vector3.forward * forwardMovement * thrustReversal);
+			rigidbody.AddRelativeTorque (0, 0, -(Input.GetAxis ("Horizontal")) * thrustBalance);
+			rigidbody.AddRelativeForce ((Input.GetAxis ("Horizontal")) * lateralThrust, 0, 0);
 			
 //			transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
 			if (transform.position.y <= -6) {
