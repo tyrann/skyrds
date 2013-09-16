@@ -1546,6 +1546,8 @@ GameObject:
   - 54: {fileID: 2127911166}
   - 114: {fileID: 2127911165}
   - 64: {fileID: 2127911172}
+  - 75: {fileID: 2127911173}
+  - 114: {fileID: 2127911174}
   m_Layer: 0
   m_Name: Space_Shooter
   m_TagString: Player
@@ -1669,3 +1671,25 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 564c86c1543c6eb4e8525374599f15cc, type: 3}
+--- !u!75 &2127911173
+ConstantForce:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127911164}
+  m_Enabled: 1
+  m_Force: {x: 0, y: -1000, z: 0}
+  m_RelativeForce: {x: 0, y: 0, z: 0}
+  m_Torque: {x: 0, y: 0, z: 0}
+  m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!114 &2127911174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127911164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7c7d70ad21bc5479f2997291efaae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
