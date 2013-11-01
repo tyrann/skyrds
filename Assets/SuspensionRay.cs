@@ -4,7 +4,7 @@ using System.Collections;
 public class SuspensionRay : MonoBehaviour
 {
 	float suspensionRange = 1.7f;
-	float suspensionForce = 700f;
+	float suspensionForce = 900f;
 	float suspensionDamp = 60.00f;
 	bool hasLift=false;
 	private RaycastHit hit;

@@ -290,7 +290,7 @@ Transform:
   m_GameObject: {fileID: 450964327}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.78116131, y: -1.70230865, z: 182.690598}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3.13030291, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &468953892
@@ -370,7 +370,6 @@ GameObject:
   - 33: {fileID: 840432290}
   - 136: {fileID: 840432289}
   - 23: {fileID: 840432288}
-  - 54: {fileID: 840432292}
   m_Layer: 0
   m_Name: pillar_8
   m_TagString: Untagged
@@ -427,21 +426,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &840432292
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840432287}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &862957759
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +437,6 @@ GameObject:
   - 33: {fileID: 862957762}
   - 136: {fileID: 862957761}
   - 23: {fileID: 862957760}
-  - 54: {fileID: 862957764}
   m_Layer: 0
   m_Name: pillar_3
   m_TagString: Untagged
@@ -510,21 +493,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &862957764
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 862957759}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &884626749
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,7 +608,6 @@ GameObject:
   - 33: {fileID: 975408398}
   - 136: {fileID: 975408397}
   - 23: {fileID: 975408396}
-  - 54: {fileID: 975408400}
   m_Layer: 0
   m_Name: pillar_2
   m_TagString: Untagged
@@ -697,21 +664,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &975408400
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 975408395}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &1051721498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,7 +967,6 @@ GameObject:
   - 33: {fileID: 1207497076}
   - 136: {fileID: 1207497075}
   - 23: {fileID: 1207497074}
-  - 54: {fileID: 1207497078}
   m_Layer: 0
   m_Name: pillar_1
   m_TagString: Untagged
@@ -1079,21 +1030,6 @@ Transform:
   - {fileID: 1628792660}
   - {fileID: 840432291}
   m_Father: {fileID: 0}
---- !u!54 &1207497078
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207497073}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &1225796224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1119,7 @@ Transform:
   m_GameObject: {fileID: 1316689934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.28777695, y: -1.70230865, z: 182.690598}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 3.13030291, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!1 &1445785631
@@ -1263,7 +1199,6 @@ GameObject:
   - 33: {fileID: 1628792659}
   - 136: {fileID: 1628792658}
   - 23: {fileID: 1628792657}
-  - 54: {fileID: 1628792661}
   m_Layer: 0
   m_Name: pillar_7
   m_TagString: Untagged
@@ -1320,21 +1255,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &1628792661
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1628792656}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &1745067015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1266,6 @@ GameObject:
   - 33: {fileID: 1745067018}
   - 136: {fileID: 1745067017}
   - 23: {fileID: 1745067016}
-  - 54: {fileID: 1745067020}
   m_Layer: 0
   m_Name: pillar_6
   m_TagString: Untagged
@@ -1403,21 +1322,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &1745067020
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1745067015}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &1826254780
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,7 +1532,6 @@ GameObject:
   - 33: {fileID: 1981069504}
   - 136: {fileID: 1981069503}
   - 23: {fileID: 1981069502}
-  - 54: {fileID: 1981069506}
   m_Layer: 0
   m_Name: pillar_5
   m_TagString: Untagged
@@ -1685,21 +1588,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &1981069506
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1981069501}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &2092129834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1599,6 @@ GameObject:
   - 33: {fileID: 2092129837}
   - 136: {fileID: 2092129836}
   - 23: {fileID: 2092129835}
-  - 54: {fileID: 2092129839}
   m_Layer: 0
   m_Name: pillar_4
   m_TagString: Untagged
@@ -1768,21 +1655,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1207497077}
---- !u!54 &2092129839
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2092129834}
-  serializedVersion: 2
-  m_Mass: 2000
-  m_Drag: 0
-  m_AngularDrag: .0500000007
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!1 &2127911164
 GameObject:
   m_ObjectHideFlags: 0
