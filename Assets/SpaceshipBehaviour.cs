@@ -19,9 +19,9 @@ public class SpaceshipBehaviour : MonoBehaviour
 	private float timeElapsed = 0;
 	private bool playing = true;
 	private bool won = false;
-	private float thrustReversal = 100000f;
-	private float thrustBalance = 20f;
-	private float lateralThrust = 5000f;
+	private float thrustReversal = 50000f;
+	private float thrustBalance = 30f;
+	private float lateralThrust = 3000f;
 	private float liftThrust = 10000f;
 	
 	

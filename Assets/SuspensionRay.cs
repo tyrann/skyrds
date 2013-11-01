@@ -4,8 +4,8 @@ using System.Collections;
 public class SuspensionRay : MonoBehaviour
 {
 	float suspensionRange = 1.7f;
-	float suspensionForce = 300f;
-	float suspensionDamp = 30.00f;
+	float suspensionForce = 700f;
+	float suspensionDamp = 60.00f;
 	bool hasLift=false;
 	private RaycastHit hit;
 	private Rigidbody parent;
@@ -20,7 +20,7 @@ public class SuspensionRay : MonoBehaviour
 		if (Physics.Raycast (transform.position, worldDown, out hit, suspensionRange) && hit.collider.transform.root != transform.root) {
 			hasLift=true;
 			Vector3 velocityAtTouch = parent.GetPointVelocity (hit.point);
-			suspensionForce = 300 * 1/hit.distance;
+//			suspensionForce = 500 * 1/hit.distance;
 			float compression = hit.distance / (suspensionRange);
 			compression = -compression + 1;
 			Vector3 counterForce = (-worldDown * compression * suspensionForce);
