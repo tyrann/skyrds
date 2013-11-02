@@ -3,8 +3,8 @@ using System.Collections;
 
 public class SuspensionRay : MonoBehaviour
 {
-	float suspensionRange = 1.7f;
-	float suspensionForce = 900f;
+	float suspensionRange = 1.2f;
+	float suspensionForce = 3000f;
 	float suspensionDamp = 60.00f;
 	bool hasLift=false;
 	private RaycastHit hit;

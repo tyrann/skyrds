@@ -61,7 +61,7 @@ public class SpaceshipBehaviour : MonoBehaviour
 			rigidbody.AddRelativeForce ((Input.GetAxis ("Horizontal")) * lateralThrust, 0, 0);
 			
 //			transform.Translate (Vector3.forward * forwardMovement + Vector3.right * horizontalMovement);
-			if (transform.position.y <= -6) {
+			if (transform.position.y <= -20) {
 				playing = false;
 				won = false;
 			}
